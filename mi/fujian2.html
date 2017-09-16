@@ -1,0 +1,184 @@
+<style>
+  #personCenter{
+    color: gainsboro;
+    width: 100px;
+  }
+  #shopcartoggle{
+    color: gainsboro;
+  }
+  #shopcartoggle:hover{
+    background-color:white;
+    color: rgb(255,103,0);
+  }
+  #personCenter:hover{
+    background-color:white;
+    color: rgb(255,103,0);
+  }
+  #dropdownMenuPerson{
+    color: black;
+    min-width: 100px;
+    border-radius:0px;
+    border: none;
+  }
+  #hover1:hover,#hover2:hover{
+    color: white;
+  }
+  #togglecontent{
+    min-width: 350px;
+  }
+
+  #shopcartoggle:before{
+    content: '';
+    display: block;
+    position: absolute;
+    top:0;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    background-color: lightgrey;
+    opacity: 0.2;
+  }
+  .location>li>a{
+
+    line-height: 20px;
+  }
+</style>
+
+<nav class="navbar navbar-default " style="background-color: black;border: none;margin-bottom: 0px;position: relative">
+  <div class="container">
+    <div class="row">
+      <ul id='header-nav'class="nav navbar-nav header-nav location">
+        <li style=""><a href="#" style="padding-left: 0px">小米商城</a></li>
+        <li><a href="#">MIUI</a></li>
+        <li><a href="#">米聊</a></li>
+        <li><a href="#">游戏</a></li>
+        <li><a href="#">多看阅读</a></li>
+        <li><a href="#">云服务</a></li>
+        <li><a href="#" style="">米币</a></li>
+        <li><a href="#" style="">小米商城手机版</a></li>
+      </ul>
+      <ul  class="nav navbar-nav navbar-right location">
+        <li class="dropdown">
+          <a id="personCenter" class="dropdown-toggle text-center" data-target="dropdown" href="#" >
+            个人中心 <i class="fa fa-angle-down" style=""></i>
+          </a>
+          <ul id="dropdownMenuPerson" class="dropdown-menu">
+            <li><a id="personcenter2" href="#">个人中心</a></li>
+            <li><a href="#">评价晒单</a></li>
+            <li><a href="#">我的喜欢</a></li>
+            <li><a href="#">小米账户</a></li>
+            <li><a href="#" id="quit">退出登录</a></li>
+          </ul>
+        </li>
+
+        <li><a id="hover1" href="#">消息通知</a></li>
+        <li><a id="hover2" href="#">我的订单</a></li>
+        <li class="dropdown" style="margin-right: 15px">
+          <a id="shopcartoggle" class="dropdown-toggle shopcartoggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-shopping-cart"> 购物车</span> </a>
+          <div id="togglecontent" class="dropdown-menu" style="color: black">
+            <div class="row" >
+            <div class="col-lg-5"  >
+            &nbsp;&nbsp;&nbsp;共<span id="numbers"></span>件商品<br>
+            <p id="totalprice" style="font-size: 20px;color: firebrick;margin-left: 20px" class=""> </p>
+            </div>
+            <div class="col-lg-7">
+            <button type="button" class="btn btn-block btn-lg btn-danger">去购物车结算</button>
+            </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+<script type="text/template" id="template">
+
+
+  <div class="row"id="row1" style="height: 70px">
+    <div class="col-lg-2">
+      <img src="{0}"style="height: 70px;width: auto" >
+    </div>
+    <div class="col-lg-4" style="line-height: 70px">
+      {1}
+    </div>
+    <div class="col-lg-3" style="line-height: 70px">
+      {2}元X
+    </div>
+    <div class="col-lg-1" style="line-height: 70px">
+      {3}
+    </div>
+    <div class="col-lg-2" style="margin-top: 23px" >
+      <button class="close"><span>&times;</span></button>
+    </div>
+  </div>
+</script>
+<script>
+  console.log('你好欢迎登陆222');
+  $(function () {
+
+    $('#personcenter2').on('click',function () {
+      window.location.href='personCenter.html';
+    })
+
+    $('#quit').on('click',function () {
+      sessionStorage.clear();
+      window.location.href='01.html';
+//      sessionStorage.setItem('sign',3);
+
+    })
+
+    $('#personCenter').parent().on('mouseenter mouseleave',function () {
+      $(this).toggleClass('open');
+    })
+
+
+    $('#shopcartoggle').parent().on('mouseenter mouseleave',function () {
+//      $(this).click();
+      $(this).toggleClass('open');
+      console.log('nihao')
+    })
+    $('#togglecontent').on('click','.close',function () {
+      $(this).parent().parent().remove();
+    })
+    $.getJSON('good.json',function (data) {
+     var template=$('#template').text();
+     var html='';
+     var numbers=0;
+     var totalprice=0;
+     function createRow() {
+     $.each(data,function (index,item) {
+     numbers+=item.number;
+     totalprice+=(item.price*item.number);
+
+     html+=$.tool.format(template,item.imageurl,$.tool.tostring(item.name,item.key),item.price,item.number);
+     })
+     var html1= html+$('#togglecontent').html();
+     $('#togglecontent').html(html1);
+     $('#numbers').html(numbers);
+     $('#totalprice').html(totalprice);
+     }
+
+     createRow();
+
+     })
+    var userq=JSON.parse(sessionStorage.getItem('temporaryUser'));
+  console.log(userq);
+    $('#personCenter').html(userq.username);
+
+/*    $('#personCenter').parent().on('mouseenter mouseleave',function () {
+      $(this).toggleClass('open');
+    })*/
+
+
+    $('#hover1').click(function () {
+//      localStorage.clear();
+      console.log(localStorage.length);
+      for(i=0;i<localStorage.length;i++){
+        console.log(localStorage.key(i));
+      }
+    })
+
+  })
+</script>

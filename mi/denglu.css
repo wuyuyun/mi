@@ -1,0 +1,22 @@
+.headPortrait{
+  height: 110px;
+  width: 110px;
+  border-radius: 55px;
+  background-color: white;
+  font-size: 100px;
+  text-align: center;
+  line-height: 108px;
+  border: 2px solid rgb(227,227,227);
+
+}
+.headPortrait i{
+  color:rgb(227,227,227);
+}
+.username{
+  margin-top: 20px;
+}
+.ragin2{
+  color: black;
+  background-color: white;
+  border: 1px solid gainsboro;
+}

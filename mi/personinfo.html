@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet"href="../font-awesome-4.7.0/Font-Awesome-master/css/font-awesome.css">
+  <link href="index.css" rel="stylesheet">
+  <link rel="stylesheet" href="04.css">
+  <link rel="stylesheet" href="css.css">
+  <link href="personCenter.css" rel="stylesheet">
+  <script src="../jquery/dist/jquery.js"></script>
+  <script src="../bootstrap/dist/js/bootstrap.js"></script>
+  <script src="tool.js"></script>
+  <script src="js.js"></script>
+  <script src="dfrz-store.js"></script>
+<style>
+  #content{
+    padding: 100px 100px;
+  }
+  body{
+    background-color: rgb(249,249,249);
+  }
+  #nav{
+    margin-top: 60px;
+    padding: 0px 30px;
+  }
+  #nav-bar li a{
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    margin-left: 100px;
+  }
+  #container{
+   border: 1px solid rgb(224,224,224);
+    height: 500px;
+    margin-top: 20px;
+  }
+  .touxiang{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+  .touxiang i{
+    font-size: 100px;
+    color: rgb(224,224,224);
+  }
+  .touxiang a{
+    font-size: 16px;
+  }
+  .p{
+    margin-top: 10px;
+  }
+.containerRight{
+  width: 100%;
+  height: 500px;
+  padding: 100px 40px;
+  position: relative;
+}
+  .headerLi{
+    color: black;
+    font-weight: bold;
+  }
+  .title{
+    position: absolute;
+    top:-70px;
+    right: 10px;
+    width: 200px;
+    background-color:rgb(249,249,249);
+  }
+  .title i{
+    font-size: 100px;
+    color: rgb(224,224,224);
+    margin-left: 0px;
+  }
+  .name,.telnum{
+    color: black;
+    width: 100px;
+    padding: 0px;
+    margin-bottom: 0px;
+    text-align: right;
+    padding-right: 10px;
+  }
+  .ppar{
+    padding: 30px 0px;
+  }
+  .containerRight>ul>li:hover{
+    color: black;
+  }
+  .modal-body{
+
+  }
+  .buttonfooter{
+    width: 100px;
+    border-radius: 0px;
+  }
+  #conserve{
+    background-color: rgb(255,103,0);
+    color: white;
+  }
+  .warning{
+    color: rgb(255,103,0);
+  }
+</style>
+
+</head>
+
+<body>
+
+<div id="mymodal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal"><span>&times;</span></button>
+        <div class="modal-title">
+          编辑基础资料
+        </div>
+        <div class="modal-body" style=" padding: 20px 100px;">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="username" class="col-sm-2 control-label">姓名</label>
+              <div class="col-sm-10">
+                <input id="username"  type="text" class="form-control" >
+                <p class="warning"><span class="glyphicon glyphicon-info-sign"></span>请输入姓名，长度大于2小于20</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label  class="col-sm-2 control-label">生日</label>
+              <div class="col-sm-10">
+                  <div class="pull-left" style="width: 32%">
+                    <select id="year" class="form-control pull-left">
+                      <option>年</option>
+                      <option>2001</option>
+                      <option>2002</option>
+                      <option>2003</option>
+                      <option>2004</option>
+                      <option>2005</option>
+                      <option>2006</option>
+                      <option>2007</option>
+                      <option>2008</option>
+                      <option>2009</option>
+                      <option>2010</option>
+                      <option>2011</option>
+                      <option>2012</option>
+                      <option>2013</option>
+                      <option>2014</option>
+                    </select>
+                  </div>
+                  <div class="pull-left" style="width: 32%;margin-left: 2%">
+                    <select id="month" class="form-control pull-left" >
+                      <option>月</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                    </select>
+                  </div>
+                  <div class="pull-left" style="width: 32%;margin-left: 2%">
+                    <select id="day" class="form-control pull-left">
+                      <option>日</option>
+                    </select>
+                  </div>
+            </div>
+           </div>
+            <div class="form-group">
+              <label for="username" class="col-sm-2 control-label">性别</label>
+                <div class="col-sm-10">
+               <div class="radio">
+                 <label>
+                   <input class="man" type="radio" name="sex" value="0">男
+                 </label>
+                 <label>
+                   <input class="women" type="radio" name="sex" value="1">女
+                 </label>
+               </div>
+             </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer" style="">
+            <button id="conserve" class="btn buttonfooter" style="margin-right: 20px">保存</button>
+            <button class="btn buttonfooter" data-dismiss="modal" style="margin-right: 150px">取消</button>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="container">
+      <div class="row">
+        <div id="content">
+          <a id="quit" href="#" class="pull-right">退出</a>
+          <div >
+            <img src="image/personinfologo.png">
+          </div>
+
+          <div id="nav">
+            <nav class="nav navbar-default">
+              <ul id="nav-bar" class="nav navbar-nav">
+                <li><a href="#" style="margin-left: 0px">账户安全</a></li>
+                <li><a href="#">个人信息</a></li>
+                <li><a href="#">绑定授权</a></li>
+                <li><a href="#">小米服务</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div id="container">
+
+            <div class="col-lg-3" style="position: relative;height: 100%;">
+                <div class="touxiang" style="">
+                  <i class="fa fa-user-circle"></i>
+                  <p class="text-center p"><a href="#" >设置头像</a></p>
+                </div>
+            </div>
+            <div class="col-lg-9">
+              <div class="containerRight"style="">
+                <ul class="list-group" style="margin-bottom: 0px;">
+                <li  class="list-group-item headerLi" >基础资料<a id="edit" href="#" class="pull-right" data-toggle="modal"><i class="fa fa-pencil"></i>编辑</a></li>
+                <li class="list-group-item">姓名：<span id="name">sss</span></li>
+                <li class="list-group-item ">生日：<span id="birthday">sss</span></li>
+                <li class="list-group-item " style="border-bottom: none">性别：<span id="sex">fff</span></li>
+              </ul>
+                <ul class="list-group" style="margin-top: 0px;border-top: none;">
+                  <li  class="list-group-item headerLi" >高级设置</li>
+                  <li class="list-group-item">银行卡：<span id="card">sss</span></li>
+                  <li class="list-group-item ">账号地区：<span id="accountRegion">sss</span></li>
+                </ul>
+
+
+                <div class="title" style="">
+                  <i class="fa fa-user-circle pull-right" style="margin-left: 0px"></i>
+                  <div class="ppar">
+                    <p class="name" style="">iiiiii</p>
+                    <p class="telnum">pppppp</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+<script>
+
+  $(function () {
+    $('.warning').hide();
+
+    $('#username').blur(function () {
+      if($(this).val().length<2||$(this).val().length>21){
+        $('.warning').show();
+      }
+    })
+    $('#username').keyup(function () {
+      $('.warning').hide();
+    })
+
+
+
+
+
+    var $name=$('.name');
+    var $telnum=$('.telnum');
+    var $username=$('#name');
+    var $birthday=$('#birthday');
+    var $sex=$('#sex');
+    var str=JSON.parse(sessionStorage.getItem('temporaryUser'));
+    var userStr=store.get('user',[]);
+    var userty=store.get('userinformtion',[]);
+
+   ///个人信息页面初始化
+    /////判断对象是否为空
+    function isEmptyObject(obj) {
+      for (var key in obj) {
+        return false;
+      }
+      return true;
+    }
+
+
+
+    $name.html(str.username);
+    $telnum.html(str.userid);
+    $username.html(str.username);
+    if(!(isEmptyObject(userty)) ){
+      var birthdaystr=userty.year+'-'+userty.month+'-'+userty.day;
+      $birthday.html(birthdaystr);
+      if(userty.sex==0){
+        $sex.html('男');
+      }else if(userty.sex==1){
+        $sex.html('女');
+      }else{
+        $sex.html('');
+      }
+    }
+    var defaultvalue='';
+
+    if( isEmptyObject(userty)){
+      $birthday.html(defaultvalue);
+      $sex.html(defaultvalue);
+    }
+
+
+///模态框
+    var targe=0;
+    var $year=$('#year');
+    var $month=$('#month');
+    var $day=$('#day');
+
+
+    ////编辑按钮 模态框初始化
+    $('#edit').on('click',function () {
+
+      if(!(isEmptyObject(userty))){
+
+        var num=Number(userty.month);
+        var num2=Number(userty.year);
+
+        if(num==1||num==3||num==5||num==7||num==8||num==10||num==12){
+          createDate1();
+        }
+        else if(num==4||num==6||num==9||num==11){
+          createDate2();
+        }
+        else if(num==2){
+          if((num2%4==0&&year%100!=0)||year%400==0){
+            createDate4();
+          }else{
+            createDate3();
+          }
+        }
+        $('#username').val(userty.username);
+        $('#year').val(userty.year);
+        $('#month').val(userty.month);
+        $('#day').val(userty.day);
+        if(userty.sex==0){
+          $('.man').prop('checked',true);
+        }else if(userty.sex==1){
+          $('.women').prop('checked',true);
+        }
+      }
+      if(isEmptyObject(userty)){
+        $('#username').val(str.username);
+      }
+
+      $('#mymodal').modal({
+        backdrop:'static'
+      })
+
+    })
+
+
+
+    $year.on('change',function () {
+      targe=0;
+      var year=Number($year.val());
+      if((year%4==0&&year%100!=0)||year%400==0){
+        targe=1;
+      }
+      if(targe==1&&$month.val()==2){
+
+        createDate4();
+      }
+      if(targe==0&&$month.val()==2){
+
+        createDate3();
+      }
+    })
+
+    $month.on('change',function () {
+
+      var index=this.selectedIndex;
+      if(this.options[index].value){
+        if(index==1||index==3||index==5||index==7||index==8||index==10||index==12){
+         createDate1();
+        }
+        if(index==4||index==6||index==9||index==11){
+          createDate2();
+        }
+        if(index==2&&targe==0){
+
+          createDate3();
+        }
+        if(index==2&&targe==1){
+
+          createDate4();
+        }
+      }
+
+    })
+
+
+
+    function createDate1() {
+      var $option = '';
+      document.getElementById('day').options.length = 1;
+      for(var i=0;i<31;i++){
+        var j=i+1
+        $option += '<option value="' + j + '">' +j + '</option>';
+      }
+      $day.append($option);
+    };
+    function createDate2() {
+      var $option = '';
+      document.getElementById('day').options.length = 1;
+      for(var i=0;i<30;i++){
+        var j=i+1
+        $option += '<option value="' + j + '">' +j + '</option>';
+      }
+      $day.append($option);
+    };
+
+    function createDate3() {
+      var $option = '';
+      document.getElementById('day').options.length = 1;
+      for(var i=0;i<28;i++){
+        var j=i+1
+        $option += '<option value="' + j + '">' +j + '</option>';
+      }
+      $day.append($option);
+    };
+
+    function createDate4() {
+      var $option = '';
+      document.getElementById('day').options.length = 1;
+      for(var i=0;i<29;i++){
+        var j=i+1
+        $option += '<option value="' + j + '">' +j + '</option>';
+      }
+      $day.append($option);
+    };
+
+//    var information=[];
+//    information=store.get('userinformtion',[]);
+    var temuser=JSON.parse(sessionStorage.getItem('temporaryUser'));
+
+    $('#conserve').on('click',function () {
+//
+
+      if(($('#username').val().length>1)&&($('#username').val().length<21)){
+        var $radio=	$(":radio").filter(':checked');
+//        console.log($radio.val());
+     /*   var addressId = 1;
+        if(information.length > 0){
+          addressId = information[information.length-1].id + 1;
+        }*/
+     /*   var sexs='';
+        if($radio.val()==0){
+          sexs='男';
+        }else if($radio.val()==1) {
+          sexs='女';
+        }else {
+          sexs='';
+        }*/
+        var obj={
+          id:1,
+          username:$('#username').val(),
+          year:$year.find(':selected').prop('value'),
+          month:$month.find(':selected').prop('value'),
+          day:$day.find(':selected').prop('value'),
+          sex:$radio.val()
+        }
+        modaluser=obj;
+//        information.push(obj);
+        str.username=$('#username').val();
+
+        for(var i=0;i<userStr.length;i++){
+          if(userStr[i].userid==str.userid){
+            userStr[i].username=$('#username').val();
+          }
+        }
+        localStorage.setItem('user',JSON.stringify(userStr));
+        sessionStorage.setItem('temporaryUser',JSON.stringify(str));
+        localStorage.setItem('userinformtion',JSON.stringify(modaluser));
+        $('#mymodal').modal('hide');
+
+        ////页面重新加载
+        document.location.reload();
+      }else {
+        $('.warning').show();
+      }
+    })
+
+
+
+
+  })
+
+</script>
+
+
+<!--<script>
+  $(function () {
+
+
+
+
+
+    var $formerPassw=$('#formerPassw');
+    var $newPassw=$('#newPassw');
+    var $confirmPassw=$('#confirmPassw');
+    var $verificationCode=$('#verificationCode');
+    var $conserve=$('#conserve');
+    var $verCode=$('#verCode');
+
+    $('#changepassw').click(function () {
+      $('#mymodal').modal({
+        backdrop:'static'
+      })
+
+    })
+    $('.warning').hide();
+    $formerPassw.on('blur',function () {
+      if($(this).val().length==0){
+        $('.warningA').show();
+      }
+    })
+    $formerPassw.on('keyup',function () {
+      $('.warninggroup1').hide();
+    })
+
+
+    $newPassw.on('blur',function () {
+      if($(this).val().length==0){
+        $('.warningC').show();
+      }
+    })
+    $newPassw.on('keyup',function () {
+      $('.warninggroup2').hide();
+    })
+
+    $confirmPassw.on('blur',function () {
+      if($(this).val().length==0){
+        $('.warningC').show();
+      }
+    })
+    $confirmPassw.on('keyup',function () {
+      $('.warninggroup2').hide();
+    })
+
+    $verificationCode.on('blur',function () {
+      if($(this).val().length==0){
+        $('.warningF').show();
+      }
+    })
+    $verificationCode.on('keyup',function () {
+      $('.warninggroup3').hide();
+    })
+
+
+    /////验证码生成
+    $verCode.text(randomNum());
+    function randomNum() {
+      var t='';
+      for(var i=0;i<4;i++){
+        t+=Math.floor(Math.random()*10);
+      }
+      return t;
+    }
+    $verCode.on('click',function () {
+      $verCode.text(randomNum());
+    })
+
+
+
+
+
+    var length= /(?=^.{8,16}$)/;
+    var shuzi=/^[0-9]*$/;
+    var zimu=/^[a-zA-Z]*$/;
+    var te1=/^[!@#$%~`^&*()+=\|\\\{\}\[\]:;_'"<>,.\?/￥。、，·~`！（）—— 【】“”‘’：；《》，"-]*$/;
+
+    $conserve.on('click',function () {
+      var temuser=JSON.parse(sessionStorage.getItem('temporaryUser'));
+      var mark=0;
+      if($formerPassw.val().length==0){
+        $('.warningA').show();
+        mark++;
+      }else if(temuser.userpassw!==$formerPassw.val()){
+        $('.warningB').show();
+        mark++;
+      }
+      if($newPassw.val().length==0){
+        $('.warningC').show();
+        mark++;
+      }else if(length.test($newPassw.val())==false){
+        $('.warningD').show();
+        mark++;
+      }else if(te1.test($newPassw.val())||shuzi.test($newPassw.val())||zimu.test($newPassw.val())){
+        $('.warningD').show();
+        mark++;
+      } else if($confirmPassw.val().length==0){
+        $('.warningC').show();
+        mark++;
+      }else if($.trim($confirmPassw.val())!==$.trim($newPassw.val())){
+        $('.warningE').show();
+        mark++;
+      }
+
+      if($verificationCode.val().length==0){
+        $('.warningF').show();
+        console.log('验证码长度');
+        mark++;
+      }else if($.trim($verificationCode.val())!==$.trim($verCode.text())){
+        $('.warningG').show();
+        mark++;
+      }
+      var User=JSON.parse(localStorage.getItem('user'));
+      if(mark==0){
+
+        var userId=temuser.userid;
+        $.each(User,function (index,item) {
+          if(item.userid==userId){
+            item.userpassw=$newPassw.val();
+            localStorage.setItem('user',JSON.stringify(User));
+            var temporaryUser1={
+              username:temuser.username,
+              userid:temuser.userid,
+              userpassw:item.userpassw
+            };
+            sessionStorage.setItem('temporaryUser',JSON.stringify(temporaryUser1));
+
+          }
+
+        })
+        $('#mymodal').modal('hide');
+      }
+
+    })
+
+
+
+    $('#personcen').on('click',function () {
+      window.location.href='personCenter.html';
+    })
+
+    $('#quit').on('click',function () {
+      window.location.href='01.html';
+      sessionStorage.clear();
+    })
+
+
+    $('#personCenter').parent().on('mouseenter mouseleave',function () {
+      $(this).toggleClass('open');
+//        $(this).click();
+//        console.log('hhhh')
+    })
+
+    var userp=JSON.parse(sessionStorage.getItem('temporaryUser'));
+    $('#personCenter').html(userp.username);
+    $('#hover1').click(function () {
+//      localStorage.clear();
+      console.log(localStorage.length);
+      for(i=0;i<localStorage.length;i++){
+        console.log(localStorage.key(i));
+      }
+    })
+
+////////购物车
+    $('#shopcartoggle').parent().on('mouseenter mouseleave',function () {
+      $(this).toggleClass('open');
+      console.log('nihao')
+    })
+    $('#togglecontent').on('click','.close',function () {
+      $(this).parent().parent().remove();
+    })
+
+
+
+    function date() {
+      var mydate=new Date();
+      var time=mydate.getHours();
+      var timehours='';
+      if(time>=5&&time<12){
+        timehours='上午好~';
+      }else if(time>=12&&time<19){
+        timehours='下午好~';
+      }else {
+        timehours='晚上好~';
+      }
+
+      return timehours;
+    }
+    var times=date();
+
+    var shortuser=JSON.parse(sessionStorage.getItem('temporaryUser'));
+
+    var str=shortuser.userid;
+    var str1=str.substring(3,8);
+    var str2=str.replace(str1,'******');
+
+    $('#name').html(shortuser.username);
+    $('#time').html(times);
+    $('#binding').text(str2);
+
+//注册跳转
+    $('#hover2').click(function () {
+      window.location.href='login.html';
+    })
+//登录跳转
+    $('#hover1').click(function () {
+      window.location.href='register.html';
+    })
+
+
+
+    $('.thumbnail5').on('mouseenter mouseleave',function () {
+      $(this).toggleClass('box-shadow');
+    })
+    $('.df').on('mouseenter mouseleave',function () {
+      $(this).click();
+    })
+
+
+
+
+    $('.nav-a').on('mouseenter mouseleave',function () {
+      $(this).click();
+    })
+    $('.nav-a').mouseenter(function () {
+      $('.tab-content2').show();
+    })
+    $('.nav-a').mouseleave(function () {
+      $('.tab-content2').hide();
+    })
+
+
+    //折叠
+    $('.panel').on('mouseenter mouseleave',function () {
+      $(this).click();
+    })
+
+    $('#search').on('focus',function () {
+      $('.hotsearch').hide();
+
+    })
+    $('#search').on('blur',function () {
+      var $len=$('#search').val();
+      if($len.length==0) {
+        $('.hotsearch').show();
+      }
+    })
+
+
+//    $.getJSON('good.json',function (data) {
+//      var template=$('#template').text();
+//      var html='';
+//      var numbers=0;
+//      var totalprice=0;
+//      function createRow() {
+//        $.each(data,function (index,item) {
+//          numbers+=item.number;
+//          totalprice+=(item.price*item.number);
+//
+//          html+=$.tool.format(template,item.imageurl,$.tool.tostring(item.name,item.key),item.price,item.number);
+//        })
+//        var html1= html+$('#togglecontent').html();
+//        $('#togglecontent').html(html1);
+//        $('#numbers').html(numbers);
+//        $('#totalprice').html(totalprice);
+//      }
+//
+//      createRow();
+//
+//    })
+
+
+  })
+
+</script>-->
+
+</body>
+</html>
+
+
