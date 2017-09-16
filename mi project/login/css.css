@@ -1,0 +1,406 @@
+body{
+  background-color: white;
+}
+
+.searchdropmenu li{
+  height:50px;
+  line-height: 50px;
+}
+.searchdropmenu li span{
+  color: darkgray;
+}
+.searchdropmenu{
+  border:darkorange 1px solid;
+}
+#search:focus {
+  border:darkorange 1px solid;
+}
+.buttonsearch1{
+  background-color: darkorange;
+  color: whitesmoke;
+}
+
+.ulfoot{
+  position: relative;
+  background-color: #2b542c;
+ /*background-color: rgb(95 87 80);*/
+}
+.par1 li{
+  text-align: center;
+  width: 33.3333%;
+  float: left;
+  border:1px solid grey;
+  border-top:none ;
+  border-left: none;
+}
+#par2 li{
+  border-bottom: none;
+  z-index: 1000;
+}
+.par1 li a i{
+  font-size: 20px;
+
+}
+.par1 li a i,p{
+  color: whitesmoke;
+}
+.image3{
+  width: 100%;
+  height: 144px;
+}
+.image3 img{
+  width: 100%;
+  height: 144px;
+}
+.star .col-lg-3{
+  padding: 0px;
+  width: 292.5px;
+  margin-left: 10px;
+
+}
+.star .col-lg-3:nth-of-type(1){
+  margin-left: 0px;
+}
+.star .col-lg-3 .thumbnail1{
+  width: 100%;
+  border: none;
+  position: relative;
+  z-index: 0;
+}
+.weilei{
+  position: absolute;
+  top:0px;
+  left:0px;
+  width: 100%;
+  height:100%;
+  background-color: grey;
+  z-index: -1;
+  opacity: 0.04;
+}
+
+
+.star .col-lg-3:nth-of-type(1) .thumbnail1{
+  border-top: greenyellow 2px solid;
+}
+.star .col-lg-3:nth-of-type(2) .thumbnail1{
+  border-top: peachpuff 2px solid;
+}
+.star .col-lg-3:nth-of-type(3) .thumbnail1{
+  border-top: lightblue 2px solid;
+}
+.star .col-lg-3:nth-of-type(4) .thumbnail1{
+  border-top: plum 2px solid;
+}
+
+
+.star .col-lg-3 .thumbnail img{
+  width: 100%;
+  height: auto;
+}
+.starheader p{
+  color: black;
+  font-size: 20px;
+}
+#mycarousel2{
+  position: relative;
+}
+#dingwei{
+}
+.da{
+  display: inline-block;
+ border: solid 1px gainsboro;
+  width: 40px;
+  height: 20px;
+  text-align: center;
+}
+.da:nth-of-type(2){
+  margin-left: -3px;
+  border-left: none;
+}
+.navbar-brand-jiadian{
+  color: black;
+  font-size: 20px;
+}
+
+#container2{
+  position: relative;
+}
+
+.container2{
+font-size: 25px;
+  color: black;
+  /*background-color: rgb(245,245,245);*/
+}
+.container3{
+  position: absolute;
+  right:0px;
+  bottom: 0px;
+
+}
+.container3 span{
+  margin-left: 30px;
+  font-size: 18px;
+  display: inline-block;
+
+}
+.container3 span:hover{
+  color: orange;
+  border-bottom: 2px orange solid;
+}
+.gh .col-lg{
+ width: 285.8333333px;
+  float: left;
+}
+
+.gh .col-lg{
+ margin-left: 10px;
+  height: 365.625px;
+}
+.gh .col-lg:nth-of-type(1){
+  margin-left: 0px;
+}
+
+.gh .col-lg:nth-of-type(4){
+  margin-left: 0px;
+}
+
+.gh .col-lg .thumbnail{
+  margin-bottom: 0px;
+  height: 100%;
+}
+.yh .col-lg{
+  margin-top: 10px;
+}
+.thumbnail2:nth-of-type(2){
+  margin-top: 10px;
+}
+#container3{
+  position: relative;
+}
+del{
+  color: grey;
+}
+.thumbnail{
+  border-radius: 0px;
+}
+
+.df{
+  position: relative;
+}
+.content{
+  margin-top: 20px;
+  padding: 15px 20px;
+  position: absolute;
+  bottom: 0px;
+  left:0px;
+  text-align: left;
+}
+.dff{
+  padding: 10px 30px;
+  position: absolute;
+  bottom: 0px;
+  left:0px;
+  z-index: 100;
+  background-color: rgb(255,103,0);
+  height: 0px;
+  color: white;
+  opacity: 0;
+
+}
+
+
+.zhezhao{
+  position: absolute;
+  top:0px;
+  left:0px;
+  content: '';
+  width: 100%;
+  height:100%;
+  z-index: auto;
+  background-color: black;
+  opacity: 0.7;
+}
+
+.cv{
+  padding: 0px;
+  width: 285px;
+  margin-left: 10px;
+}
+.cv:nth-of-type(1){
+  margin-left: 0px;
+}
+.cv .thumbnail{
+  width: 100%;
+}
+.cv .thumbnail img{
+  width: 100%;
+  height: auto;
+}
+.shuxian{
+  color: #737373;
+}
+#mycarouse-1{
+  width: 100%;
+  background-color: white;
+  position: relative;
+  border: none;
+  border-top: 2px solid gold;
+  height:385px;
+}
+.carouselNeirong .item{
+  width: 100%;
+}
+.carouselNeirong .item img{
+  width:100%;
+}
+.position{
+
+}
+.carouselimage1{
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: white;
+}
+ .caption1 span{
+  color: gold;
+  font-size: 18px;
+}
+.caption1 p:nth-of-type(1){
+  color: black;
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+.caption1 p:nth-of-type(2){
+  color: gainsboro;
+  font-size: 13px;
+}
+.caption1 p:nth-of-type(3){
+  color: black;
+  font-size: 15px;
+}
+.control{
+  position: absolute;
+  top:50%;
+  border: 1px solid gainsboro;
+  height: 50px;
+  width: 25px;
+  text-align: center;
+  line-height: 50px;
+  color: white;
+  background-color: grey;
+  opacity: 0.3;
+  margin-top: -25px;
+  display: none;
+
+}
+.control1{
+  right:0px
+}
+.show{
+  display: block;
+}
+
+#mycarouse-2{
+  width: 100%;
+  background-color: white;
+  position: relative;
+  border: none;
+  border-top: 2px solid green;
+  height:385px;
+}
+#ol,#ol1,#ol2,#ol3{
+  position: absolute;
+  bottom:-10px;
+
+}
+.ol li{
+  background-color: gainsboro;
+  border: none;
+}
+.carousel-indicators .active{
+  background-color: darkorange;
+  border: 2px darkorange solid;
+}
+.caption2 span{
+  color: green;
+  font-size: 18px;
+}
+.caption2 p:nth-of-type(1){
+  color: black;
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+.caption2 p:nth-of-type(2){
+  color: gainsboro;
+  font-size: 13px;
+}
+.caption2 p:nth-of-type(3){
+  color: black;
+  font-size: 15px;
+}
+#mycarouse-3{
+  width: 100%;
+  background-color: white;
+  position: relative;
+  border: none;
+  border-top: 2px solid plum;
+  height:385px;
+}
+.caption3 span{
+  color: plum;
+  font-size: 18px;
+}
+.caption3 p:nth-of-type(1){
+  color: black;
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+.caption3 p:nth-of-type(2){
+  color: gainsboro;
+  font-size: 13px;
+}
+.caption3 p:nth-of-type(3){
+  color: black;
+  font-size: 15px;
+}
+#mycarouse-4{
+  width: 100%;
+  background-color: white;
+  position: relative;
+  border: none;
+  border-top: 2px solid blue;
+  height:385px;
+}
+.caption4 span{
+  color: blue;
+  font-size: 18px;
+}
+.caption4 p:nth-of-type(1){
+  color: black;
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+.caption4 p:nth-of-type(2){
+  color: gainsboro;
+  font-size: 13px;
+}
+.caption4 p:nth-of-type(3){
+  color: black;
+  font-size: 15px;
+}
+.footnav{
+  background-color: white;
+
+}
+.footnav>ul li{
+  line-height: 100px;
+}
+#togglecontent{
+  min-width: 350px;
+  color: gainsboro;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+

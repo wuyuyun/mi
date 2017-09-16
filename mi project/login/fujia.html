@@ -1,0 +1,127 @@
+<style>
+  #personCenter{
+    color: gainsboro;
+    width: 100px;
+  }
+  #shopcartoggle{
+    color: gainsboro;
+  }
+  #shopcartoggle:hover{
+    background-color:white;
+    color: rgb(255,103,0);
+  }
+  #personCenter:hover{
+    background-color:white;
+    color: rgb(255,103,0);
+  }
+  #dropdownMenuPerson{
+    color: black;
+    min-width: 100px;
+    border-radius:0px;
+    border: none;
+  }
+  #hover1:hover,#hover2:hover{
+    color: white;
+  }
+  #togglecontent{
+    min-width: 350px;
+  }
+  #shopcartoggle:before{
+    content: '';
+    display: block;
+    position: absolute;
+    top:0;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    background-color: lightgrey;
+    opacity: 0.3;
+    /*z-index: -1;*/
+  }
+/*  .header-nav>li>a{
+    line-height: 40px;
+  }*/
+</style>
+
+<nav class="navbar navbar-default " style="background-color: black;border: none;margin-bottom: 0px">
+  <div class="container">
+    <div class="row">
+      <ul id='header-nav'class="nav navbar-nav header-nav">
+        <li style=""><a href="#" style="padding-left: 0px">小米商城</a></li>
+        <li><a href="#">MIUI</a></li>
+        <li><a href="#">米聊</a></li>
+        <li><a href="#">游戏</a></li>
+        <li><a href="#">多看阅读</a></li>
+        <li><a href="#">云服务</a></li>
+        <li><a href="#" style="">米币</a></li>
+        <li><a href="#" style="">小米商城手机版</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a id="personCenter" class="dropdown-toggle text-center" data-target="dropdown" href="#" >
+             <i class="fa fa-angle-down" ></i>
+
+          </a>
+            <ul  id="dropdownMenuPerson" class="dropdown-menu">
+              <li><a id='personcen' href="#">个人中心</a></li>
+              <li><a href="#">评价晒单</a></li>
+              <li><a href="#">我的喜欢</a></li>
+              <li><a href="#">小米账户</a></li>
+              <li><a href="#" id="quit">退出登录</a></li>
+            </ul>
+        </li>
+
+        <li><a id="hover1" href="#">消息通知</a></li>
+        <li><a id="hover2" href="#">我的订单</a></li>
+        <li class="dropdown" style="margin-right: 15px;">
+          <a id="shopcartoggle" class="dropdown-toggle shopcartoggle" data-toggle="dropdown" >
+            <span class="glyphicon glyphicon-shopping-cart"> 购物车</span> </a>
+          <div id="togglecontent" class="dropdown-menu" style="color: black">
+
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+<script>
+  console.log('你好欢迎登陆');
+  $(function () {
+
+    $('#personcen').on('click',function () {
+      window.location.href='personCenter.html';
+    })
+
+    $('#quit').on('click',function () {
+      sessionStorage.clear();
+      window.location.href='01.html';
+//      sessionStorage.setItem('sign',3);
+
+    })
+
+      $('#togglecontent').load('header2.html');
+
+    var User=JSON.parse(sessionStorage.getItem('temporaryUser'));
+    console.log(User.userid);
+    console.log(User);
+//    console.log( User);
+    $('#personCenter').html(User.username);
+
+    $('#personCenter').parent().on('mouseenter mouseleave',function () {
+      $(this).toggleClass('open');
+    })
+    $('.shopcartoggle').parent().on('mouseenter mouseleave',function () {
+      $(this).toggleClass('open');
+    })
+
+    $('#hover1').click(function () {
+//      localStorage.clear();
+      console.log(localStorage.length);
+      for(i=0;i<localStorage.length;i++){
+        console.log(localStorage.key(i));
+      }
+    })
+
+  })
+</script>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册界面</title>
+  <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="login.css" rel="stylesheet">
+  <link href="loginmain.css" rel="stylesheet">
+  <script src="../jquery/dist/jquery.js"></script>
+  <script src="../bootstrap/dist/js/bootstrap.js"></script>
+  <script src="md5.js"></script>
+  <script src="dfrz-store.js"></script>
+  <script>
+    var request =
+    {
+      QueryString : function(val)
+      {
+        var uri = window.location.search;
+        var re = new RegExp("" +val+ "=([^&?]*)", "ig");
+        return ((uri.match(re))?(uri.match(re)[0].substr(val.length+1)):null);
+      }
+    }
+  </script>
+</head>
+<body>
+<div class="container container-par">
+  <div class="row ">
+    <div class=""><img src="image/logo.png" class="center-block" ></div>
+  </div>
+  <div class="row">
+    <div class="text-center center-block title" >
+      <h2>注册小米账号</h2></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+      <form class="center-block" >
+        <div class="form-group">
+          <p class="help-block">用户名</p>
+        <input type="text" class="form-control height" id="username">
+        </div>
+
+        <div class="form-group">
+          <p class="help-block">密码</p>
+          <input type="password" class="form-control height" id="password">
+          <p class="warning help-block warningpassw1 warningpassw"><span class="glyphicon glyphicon-info-sign"></span>请输入密码</p>
+          <p class="warning help-block warningpassw2 warningpassw"><span class="glyphicon glyphicon-info-sign"></span>密码长度为8-16位，至少包含数字、字母和符号中的两种</p>
+        </div>
+
+        <div class="form-group">
+          <p class="help-block">确认密码</p>
+          <input type="password" class="form-control height" id="confirmPassword">
+          <p class="warning help-block warningpassw3 warningCpass"><span class="glyphicon glyphicon-info-sign"></span>请输入确认密码</p>
+          <p class="warning help-block warningpassw4 warningCpass"><span class="glyphicon glyphicon-info-sign"></span>密码前后不一致</p>
+        </div>
+
+        <button type="button" class="btn btn-block btn-lg ragin " id="submit">立即注册</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  $(function () {
+
+    var user=[];
+    user=store.get('user',[]);
+
+    $('.warning').hide();
+    var $passw=$('#password');
+    var $confirmPassw=$('#confirmPassword');
+    $passw.blur(function () {
+      if($passw.val().length==0){
+        $('.warningpassw1').show();
+      }
+    })
+    $confirmPassw.blur(function () {
+      if($confirmPassw.val().length==0){
+        $('.warningpassw3').show();
+      }
+    })
+
+    $passw.keyup(function () {
+      $('.warningpassw').hide();
+    })
+    $confirmPassw.keyup(function () {
+      $('.warningCpass').hide();
+    })
+//密码长度
+    var length= /(?=^.{8,16}$)/;
+    var shuzi=/^[0-9]*$/;
+    var zimu=/^[a-zA-Z]*$/;
+//    var teshuzifu=/^[!@#$%~`^&*()_+=-\|\\\{\}\[\]:;'"<>,.\?/￥。、，·~`！（）—— 【】“”‘’：；《》，"]*$/;
+    var teshuzifu=/^[!@#$%~`^&*()+=\|\\\{\}\[\]:;_'"<>,.\?/￥。、，·~`！（）—— 【】“”‘’：；《》，"-]*$/;
+
+
+    //本地存储
+    var j=0
+    if(localStorage.getItem('signtag')){
+      j=Number(localStorage.getItem('signtag'));
+    }else{
+      j=0;
+    }
+
+
+    $('#submit').on('click',function () {
+      $('.warning').hide();
+
+      if($passw.val().length==0){
+        $('.warningpassw1').show();
+
+        return false;
+      } else if(length.test($passw.val())==false){
+        $('.warningpassw2').show();
+
+        return false;
+      }else if(teshuzifu.test($passw.val())||shuzi.test($passw.val())||zimu.test($passw.val())){
+        $('.warningpassw2').show();
+
+        return false;
+      }else if($.trim($passw.val())!==$.trim($confirmPassw.val())) {
+        $('.warningpassw4').show();
+
+        return false;
+      }else{
+
+        var userId=1;
+        if(user.length > 0){
+          userId = user[user.length-1].id + 1;
+        }
+        var username1=$('#username').val();
+        var userid1=sessionStorage.getItem('telNumber');
+        var userpassw1=$('#password').val();
+        var obj={
+          id:userId,
+          username:username1,
+          userid:userid1,
+          userpassw:userpassw1
+        }
+        user.push(obj);
+        localStorage.setItem('user',JSON.stringify(user));
+
+        sessionStorage.setItem('temporare',JSON.stringify(obj));
+
+//        window.location.href='denglu.html?mark='+z;
+        window.location.href='denglu.html';
+      }
+
+    })
+
+  })
+
+
+</script>
+</body>
+</html>
+

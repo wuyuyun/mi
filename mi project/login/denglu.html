@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录界面</title>
+  <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet"href="../font-awesome-4.7.0/Font-Awesome-master/css/font-awesome.css">
+  <link href="login.css" rel="stylesheet">
+  <link href="loginmain.css" rel="stylesheet">
+  <link href="denglu.css" rel="stylesheet">
+  <script src="../jquery/dist/jquery.js"></script>
+  <script src="../bootstrap/dist/js/bootstrap.js"></script>
+  <script>
+    var request =
+    {
+      QueryString : function(val)
+      {
+        var uri = window.location.search;
+        var re = new RegExp("" +val+ "=([^&?]*)", "ig");
+        return ((uri.match(re))?(uri.match(re)[0].substr(val.length+1)):null);
+      }
+    }
+  </script>
+</head>
+<body>
+<div class="container container-par">
+  <div class="row ">
+    <div class=""><img src="image/logo.png" class="center-block" ></div>
+  </div>
+  <div class="row">
+    <div class="text-center center-block title" >
+      <h2>登录小米账号</h2></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+      <form class="center-block" >
+        <div class="form-group">
+          <div class="headPortrait center-block">
+            <i class="fa fa-user-circle"></i>
+          </div>
+          <p class="text-center username">duskjfdlg</p>
+          <p class="text-center usernameId">duskjfdlg</p>
+        </div>
+
+
+        <div class="form-group">
+          <p class="help-block">请输入密码</p>
+          <input type="password" class="form-control height" id="confirmPassword" placeholder="密码">
+          <p class="warning">请输入密码</p>
+        </div>
+
+        <button type="button" class="btn btn-block btn-lg ragin " id="submit">登录</button>
+        <button type="button" class="btn btn-block btn-lg ragin ragin2" id="forgetPassword" style="margin-top: 10px">忘记密码</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+
+
+
+    $('.warning').hide();
+  /*  var k= request.QueryString('mark');
+    console.log(k);*/
+
+    var string=JSON.parse(sessionStorage.getItem('temporare'));
+
+    $('.username').text(string.username);
+    $('.usernameId').text(string.userid);
+
+    $('#submit').on('click',function () {
+      if($('#confirmPassword').val()===string.userpassw){
+//       window.location.href='01.html?sign='+1;
+
+        sessionStorage.setItem('sign',1);
+
+        var temporaryUser1={
+          username:string.username,
+          userid:string.userid,
+          userpassw:string.userpassw
+        };
+        var str2=JSON.stringify(temporaryUser1);
+        sessionStorage.setItem('temporaryUser',str2);
+        window.location.href='01.html';
+
+      }else {
+        $('.warning').show();
+      }
+
+    })
+  })
+</script>
+</body>
+</html>
